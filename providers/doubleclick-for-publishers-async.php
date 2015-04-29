@@ -232,6 +232,8 @@ googletag.cmd.push(function() { googletag.display('acm-ad-tag-%tag_id%'); });
 			$targeting_string = $this->format_targeting_string( $targeting_params_array );
 		}
 
+		$targeting_string = apply_filters( 'acm_targeting_string', $targeting_string, $tag_id, $matching_ad_code );
+
 		return $targeting_string;
 
 	}
