@@ -140,9 +140,6 @@ class Doubleclick_For_Publishers_Async_ACM_Provider extends ACM_Provider {
 		case 'dfp_head':
 			$ad_tags = $ad_code_manager->ad_tag_ids;
 
-			// Allow users to set global targeting parameters
-			$global_targeting_string = $this->filter_targeting_string( $tag_id, null );
-
 			ob_start();
 ?>
 	<!-- Include google_services.js -->
@@ -183,7 +180,8 @@ googletag.defineSlot('/<?php echo esc_attr( $matching_ad_code['url_vars']['dfp_i
 				endif;
 			endforeach;
 ?>
-<?php if ( $global_targeting_string ) : ?>
+<?php // Allow users to set global targeting parameters ?>
+<?php if ( $global_targeting_string = $this->filter_targeting_string( $tag_id, null ) ) : ?>
 googletag.pubads()<?php echo $global_targeting_string; ?>;
 <?php endif; ?>
 googletag.pubads().enableSingleRequest();
