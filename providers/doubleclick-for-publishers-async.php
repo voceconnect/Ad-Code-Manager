@@ -175,7 +175,7 @@ googletag.cmd.push(function() {
 					// that tags are unique
 
 					// Allow users to set slot-specific targeting parameters
-					$slot_targeting_string = $this->filter_targeting_string( $tag_id, $matching_ad_code );
+					$slot_targeting_string = $this->filter_targeting_string( $tag['tag'], $matching_ad_code );
 
 ?>
 googletag.defineSlot('/<?php echo esc_attr( $matching_ad_code['url_vars']['dfp_id'] ); ?>/<?php echo esc_attr( $matching_ad_code['url_vars']['tag_name'] ); ?>', [<?php echo (int)$tt['width'] ?>, <?php echo (int)$tt['height'] ?>], "acm-ad-tag-<?php echo esc_attr( $matching_ad_code['url_vars']['tag_id'] ); ?>").addService(googletag.pubads())<?php echo $slot_targeting_string; ?>;
